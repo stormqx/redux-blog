@@ -34,3 +34,16 @@ Temporary Items
 *.iml
 out
 gen
+
+# Dependency directories
+node_modules
+jspm_packages
+
+#webpack
+bundle.js
+
+### Node template
+# Logs
+logs
+*.log
+npm-debug.log*
