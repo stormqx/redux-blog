@@ -42,6 +42,8 @@ jspm_packages
 #webpack
 bundle.js
 
+build
+
 ### Node template
 # Logs
 logs

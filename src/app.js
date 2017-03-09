@@ -5,6 +5,15 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import routes from './routes';
+import configureStore from './redux/configureStore';
+import {Provider} from 'react-redux';
 
+const store = configureStore();
 
-ReactDOM.render(routes, document.getElementById('root'));
+ReactDOM.render((
+  <Provider store={store}>
+    <div>
+      {routes}
+    </div>
+  </Provider>
+), document.getElementById('root'));
