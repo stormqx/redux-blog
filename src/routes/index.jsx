@@ -3,13 +3,13 @@
  */
 
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 
 import Frame from '../layouts/Frame';
 import Detail from '../views/Detail';
 import Home from '../views/Home';
 
-const routes = (
+const routes = (browserHistory) => (
   <Router history={browserHistory}>
     <Route path="/" component={Frame}>
       <IndexRoute component={Home} />
