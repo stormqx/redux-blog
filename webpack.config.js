@@ -9,6 +9,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     app: [
+      'whatwg-fetch',
       'webpack-hot-middleware/client',
       './src/app',
       './src/resources/index.less',
