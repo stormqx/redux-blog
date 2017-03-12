@@ -8,7 +8,7 @@ var express = require('express');
 var webpack = require('webpack');
 var hotMiddleware = require('webpack-hot-middleware');
 var webpackDevMiddleware = require('webpack-dev-middleware');
-var config = require('./webpack.config.dev');
+var config = require('./webpack.config.js');
 
 
 
@@ -30,8 +30,10 @@ var webpackDevOptions = {
 app.use(webpackDevMiddleware(compiler, webpackDevOptions));
 app.use(hotMiddleware(compiler));
 
+//暂时使用本地数据
+app.use(express.static(path.join(__dirname, 'db')));
 
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 

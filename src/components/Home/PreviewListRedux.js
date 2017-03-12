@@ -8,50 +8,51 @@ const initialState = {
   articleList: [],
 };
 
+
 //constants
-const LOAD_ARTICLE = 'LOAD_ARTICLE';
-const LOAD_ARTICLE_SUCCESS = 'LOAD_ARTICLE_SUCCESS';
-const LOAD_ARTICLE_ERROR = 'LOAD_ARTICLE_ERROR';
+const LOAD_ARTICLES = 'LOAD_ARTICLES';
+const LOAD_ARTICLES_SUCCESS = 'LOAD_ARTICLES_SUCCESS';
+const LOAD_ARTICLES_ERROR = 'LOAD_ARTICLES_ERROR';
 
 
-//action creator
+//action creators
 export function loadArticles() {
   return {
-    type: [LOAD_ARTICLE, LOAD_ARTICLE_SUCCESS, LOAD_ARTICLE_ERROR],
+    types: [LOAD_ARTICLES, LOAD_ARTICLES_SUCCESS, LOAD_ARTICLES_ERROR],
     url: '/api/articles.json',
-  }
+  };
 }
 
 
 //reducer
-function previewList(state = initialState, action) {
+export default function previewList(state = initialState, action) {
   switch (action.type) {
-    case LOAD_ARTICLE: {
-     return {
-       ...state,
-       loading: true,
-       error: false,
-     }
+    case LOAD_ARTICLES: {
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
     }
 
-    case LOAD_ARTICLE_SUCCESS: {
+    case LOAD_ARTICLES_SUCCESS: {
       return {
         ...state,
         loading: false,
         error: false,
-      }
+        articleList: action.payload,
+      };
     }
 
-    case LOAD_ARTICLE_ERROR: {
+    case LOAD_ARTICLES_ERROR: {
       return {
         ...state,
         loading: false,
         error: true,
-      }
+      };
     }
 
-    default: return state;
+    default:
+      return state;
   }
 }
-
-export default previewList;
