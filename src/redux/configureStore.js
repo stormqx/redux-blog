@@ -9,12 +9,12 @@ import DevTools from './DevTools';
 
 const FetchMiddleware = createFetchMiddleware({
   afterFetch({ action, result }) {
-    return result.json().then(data => {
-      return Promise.resolve({
+    return result.json().then(data => (
+      Promise.resolve({
         action,
         result: data,
-      });
-    });
+      })
+    ));
   },
 });
 

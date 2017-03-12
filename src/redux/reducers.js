@@ -6,4 +6,4 @@ import Home from '../views/HomeRedux';
 
 export default {
   Home,
-}
+};

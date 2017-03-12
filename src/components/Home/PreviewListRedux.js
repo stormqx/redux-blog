@@ -9,13 +9,13 @@ const initialState = {
 };
 
 
-//constants
+// constants
 const LOAD_ARTICLES = 'LOAD_ARTICLES';
 const LOAD_ARTICLES_SUCCESS = 'LOAD_ARTICLES_SUCCESS';
 const LOAD_ARTICLES_ERROR = 'LOAD_ARTICLES_ERROR';
 
 
-//action creators
+// action creators
 export function loadArticles() {
   return {
     types: [LOAD_ARTICLES, LOAD_ARTICLES_SUCCESS, LOAD_ARTICLES_ERROR],
@@ -24,7 +24,7 @@ export function loadArticles() {
 }
 
 
-//reducer
+// reducer
 export default function previewList(state = initialState, action) {
   switch (action.type) {
     case LOAD_ARTICLES: {

@@ -4,9 +4,9 @@
 
 import ReactDOM from 'react-dom';
 import React from 'react';
+import { Provider } from 'react-redux';
 import routes from './routes';
 import configureStore from './redux/configureStore';
-import {Provider} from 'react-redux';
 import DevTools from './redux/DevTools';
 
 const store = configureStore();

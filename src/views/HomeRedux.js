@@ -4,15 +4,15 @@
 import { combineReducers } from 'redux';
 
 
-//引入reducer和actionCreator
+// 引入reducer和actionCreator
 import list, { loadArticles } from '../components/Home/PreviewListRedux';
 
-//reducer
+// reducer
 export default combineReducers({
   list,
 });
 
-//actionCreator
+// actionCreator
 export const actions = {
   loadArticles,
 };
