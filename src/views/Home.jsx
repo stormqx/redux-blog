@@ -4,12 +4,16 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import PreviewList from '../components/Home/PreviewList';
 import { actions } from './HomeRedux';
 
 @connect( state => ({
   articleList: state.Home.list.articleList,
-}),actions)
+}),{
+  push,
+  ...actions,
+})
 export default class Home extends React.Component {
   constructor(props) {
     super(props);

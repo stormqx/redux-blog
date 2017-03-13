@@ -31,7 +31,7 @@ export default class PreviewList extends React.Component {
     return (
       <div className="article-preview-list">
         {articleList.map( item => (
-          <Preview {...item} key={item.id}/>
+          <Preview {...item} push={this.props.push} key={item.id}/>
         ))}
       </div>
     );
