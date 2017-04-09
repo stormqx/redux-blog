@@ -3,7 +3,7 @@
  */
 let path = require('path');
 let webpack = require('webpack');
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -36,6 +36,10 @@ module.exports = {
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|png)\w*/,
+        loader: 'file'
       },
     ],
   },

@@ -10,6 +10,7 @@ import { browserHistory } from 'react-router';
 import routes from './routes';
 import configureStore from './redux/configureStore';
 import DevTools from './redux/DevTools';
+require('font-awesome-webpack');
 
 
 
