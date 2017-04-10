@@ -14,12 +14,11 @@ export default class PreviewList extends React.Component {
   };
 
   componentDidMount() {
-    this.props.loadArticles();
+    this.props.onScrollToBottom();
   }
 
   render() {
     const { loading, error, articleList } = this.props;
-
     if (loading) {
       return (<p>Loading...</p>);
     }
@@ -30,7 +29,7 @@ export default class PreviewList extends React.Component {
 
     return (
       <div className="article-preview-list">
-        {articleList.map( item => (
+        {articleList && articleList.map( item => (
           <Preview {...item} push={this.props.push} key={item.id}/>
         ))}
       </div>

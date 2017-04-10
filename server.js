@@ -2,20 +2,20 @@
  * Created on 07/03/2017.
  */
 
-var path = require('path');
-var fs = require('fs');
-var express = require('express');
-var webpack = require('webpack');
-var hotMiddleware = require('webpack-hot-middleware');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var config = require('./webpack.config.js');
+let path = require('path');
+let fs = require('fs');
+let express = require('express');
+let webpack = require('webpack');
+let hotMiddleware = require('webpack-hot-middleware');
+let webpackDevMiddleware = require('webpack-dev-middleware');
+let config = require('./webpack.config.js');
 
 
 
-var app = express();
-var compiler = webpack(config);
+let app = express();
+let compiler = webpack(config);
 
-var webpackDevOptions = {
+let webpackDevOptions = {
   publicPath: config.output.publicPath,
   historyApiFallback: true,
   stats: {
@@ -25,7 +25,7 @@ var webpackDevOptions = {
   headers: {
     'Access-Control-Allow-Origin': '*',
   },
-}
+};
 
 app.use(webpackDevMiddleware(compiler, webpackDevOptions));
 app.use(hotMiddleware(compiler));
@@ -37,8 +37,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-var offset = 10;
-app.get('/getArticles', function(req, res) {
+let offset = 10;
+app.get('/getArticle', function(req, res) {
 
   res.json({
     "id": `${offset+=1}`,

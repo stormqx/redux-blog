@@ -2,7 +2,8 @@
  * Created on 08/03/2017.
  */
 import React from 'react';
-import Nav from './Nav';
+import Nav from '../views/Nav';
+import Slogan from '../views/Slogan';
 
 
 export default class Frame extends React.Component {
@@ -13,9 +14,10 @@ export default class Frame extends React.Component {
   render() {
     return (
       <div className="Frame">
-        <section className="header">
+        <header className="header">
           <Nav/>
-        </section>
+        </header>
+        <Slogan/>
         <section className="container">
           {this.props.children}
         </section>

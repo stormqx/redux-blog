@@ -3,7 +3,14 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { loadSlogan } from './SloganRedux';
 
+@connect( state => ({
+  slogan: state.Header.slogan,
+}),{
+  loadSlogan,
+})
 export default class Slogan extends React.Component {
   constructor(props) {
     super(props);
@@ -16,9 +23,9 @@ export default class Slogan extends React.Component {
 
   render() {
     return (
-      <h1 className="slogan">
+      <div className="slogan">
         {this.props.slogan}
-      </h1>
+      </div>
     );
   }
 }

@@ -8,10 +8,11 @@ import { Link } from 'react-router';
 export default class Nav extends React.Component {
 
   render() {
-
     return (
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/">Skill</Link>
+        <Link to="/">Life</Link>
+        <Link to="/">About</Link>
       </nav>
     );
   }

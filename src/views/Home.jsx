@@ -5,13 +5,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import PreviewList from '../components/Home/PreviewList';
 import { actions } from './HomeRedux';
-import  Slogan  from '../components/public/Slogan';
+import PullView from '../components/Home/PullView';
+
 
 @connect( state => ({
-  articleList: state.Home.list.articleList,
-  slogan: state.Home.title.slogan,
+  articleList: state.pullView.articleList
 }),{
   push,
   ...actions,
@@ -23,10 +22,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-    <div className="home">
-      <Slogan loadSlogan = { this.props.loadSlogan }  {...this.props.slogan} />
-      <PreviewList { ...this.props }/>
-    </div>
+        <PullView { ...this.props }/>
     );
   }
 }
