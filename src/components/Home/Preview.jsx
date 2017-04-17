@@ -16,6 +16,15 @@ export default class Preview extends React.Component {
     this.handleNavigate = this.handleNavigate.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(this.props.id === nextProps.id) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
   handleNavigate(id, e) {
     e.preventDefault();
 

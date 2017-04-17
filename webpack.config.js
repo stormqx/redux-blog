@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png)\w*/,
-        loader: 'file'
+        loader: 'url-loader?limit=10000'
       },
     ],
   },

@@ -33,8 +33,6 @@ export default class PullView extends React.Component {
 
   lastScrollPos = undefined;
   container = document.body;
-  //requestAnimationFrame标识
-  ticking = false;
 
   componentDidMount() {
     const {props: { mountScrollTop }, container} = this;
@@ -54,18 +52,15 @@ export default class PullView extends React.Component {
   }
 
   _onScroll() {
-    const { props: { onScrollUp, onScrollDown, onScrollToBottom, toBottom }, container } = this;
-    const scrollTop = container.scrollTop;
-    const windowHeight = window.innerHeight;
-    const scrollHeight = container.scrollHeight;
-
     // 使用requestAnimationFrame优化scroll性能
-    if (!this.ticking) {
       window.requestAnimationFrame( function() {
+        const { props: { onScrollUp, onScrollDown, onScrollToBottom, toBottom }, container } = this;
+        const scrollTop = container.scrollTop;
+        const windowHeight = window.innerHeight;
+        const scrollHeight = container.scrollHeight;
         if ((toBottom + scrollTop + windowHeight) >= scrollHeight) {
           onScrollToBottom && onScrollToBottom();
         }
-
         // 向下滑动
         if (scrollTop > this.lastScrollPos) {
           onScrollDown && onScrollDown();
@@ -75,18 +70,15 @@ export default class PullView extends React.Component {
         }
 
         this.lastScrollPos = scrollTop;
-        this.ticking = false;
+
       }.bind(this));
-    }
-    this.ticking = true;
   }
 
 
   render() {
-
     return (
       <div className="pull-view">
-        <PreviewList {...this.props}/>
+        <PreviewList articleList={this.props.articleList} loadArticles={this.props.onScrollToBottom} push={this.props.push}/>
         <Loading/>
       </div>
     );

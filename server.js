@@ -32,6 +32,7 @@ app.use(hotMiddleware(compiler));
 
 //暂时使用本地数据
 app.use(express.static(path.join(__dirname, 'db')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));

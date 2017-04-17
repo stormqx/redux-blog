@@ -8,8 +8,10 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import rootReducer from './reducers';
 import DevTools from './DevTools';
 
+const middleware = [ThunkMiddleware, routerMiddleware(browserHistory)];
+
 const finalCreateStore = compose(
-  applyMiddleware(ThunkMiddleware, routerMiddleware(browserHistory)),
+  applyMiddleware(...middleware),
   DevTools.instrument()
 )(createStore);
 

@@ -14,7 +14,7 @@ export default class PreviewList extends React.Component {
   };
 
   componentDidMount() {
-    this.props.onScrollToBottom();
+    this.props.loadArticles();
   }
 
   render() {

@@ -14,9 +14,7 @@ export default class Frame extends React.Component {
   render() {
     return (
       <div className="Frame">
-        <header className="header">
-          <Nav/>
-        </header>
+        <Nav/>
         <Slogan/>
         <section className="container">
           {this.props.children}
