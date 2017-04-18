@@ -1,11 +1,10 @@
 .nav {
   width: 100%;
   position:fixed;
-  background: @nav-background-color;
+  background: transparent;
   top: -@nav-item-height;
   height: @nav-item-height;
-
-
+  transition: top 0.5s ease;
 
 
   > #logo {
@@ -16,8 +15,6 @@
     height: @nav-item-height;
     margin-left: @nav-item-height*0.5;
     color: @nav-logo-color;
-
-
 
     &:hover&, &:visited, &:link, &:active {
       color: @nav-logo-color;
@@ -61,5 +58,5 @@
 
 .nav-show {
   top: 0;
-  transition: top 0.5s ease;
+  background: @nav-background-color;
 }

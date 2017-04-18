@@ -14,6 +14,7 @@ export default class PullView extends React.Component {
   static defaultProps = {
     mountScrollTop: 0,
     toBottom: 0,
+    firstPageHeight: 550, // 暂时设为固定值
   };
 
   static propTypes = {
@@ -23,6 +24,7 @@ export default class PullView extends React.Component {
     onPullViewUnmount: React.PropTypes.func, // 当unmount PullView组件时触发，例如记录当前阅读的位置，下次进入直接跳转
     mountScrollTop: React.PropTypes.number, // 初始化时的滚动位置
     toBottom: React.PropTypes.number, // 滑动到toBottom时，触发onScrollToBottom事件
+    firstPageHeight: React.PropTypes.number // 当高度小于首屏高度时，不触发onScrollUp, onScrollDown事件
   };
 
   constructor(props) {
@@ -54,7 +56,7 @@ export default class PullView extends React.Component {
   _onScroll() {
     // 使用requestAnimationFrame优化scroll性能
       window.requestAnimationFrame( function() {
-        const { props: { onScrollUp, onScrollDown, onScrollToBottom, toBottom }, container } = this;
+        const { props: { onScrollUp, onScrollDown, onScrollToBottom, toBottom, firstPageHeight }, container } = this;
         const scrollTop = container.scrollTop;
         const windowHeight = window.innerHeight;
         const scrollHeight = container.scrollHeight;
@@ -62,11 +64,8 @@ export default class PullView extends React.Component {
           onScrollToBottom && onScrollToBottom();
         }
         // 向下滑动
-        if (scrollTop > this.lastScrollPos) {
-          onScrollDown && onScrollDown();
-        } else {
-          // 向上滑动
-          onScrollUp && onScrollUp();
+        if (scrollTop > firstPageHeight) {
+          scrollTop > this.lastScrollPos ? onScrollDown && onScrollDown() : onScrollUp && onScrollUp();
         }
 
         this.lastScrollPos = scrollTop;

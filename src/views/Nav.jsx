@@ -25,8 +25,6 @@ export default class Nav extends React.Component {
       'nav-show': this.props.navIsShow
     });
 
-    console.log(this.props.navIsShow)
-
     return (
       <nav className={ classes }>
         <Link id="logo" to="/">
