@@ -7,8 +7,11 @@ import { browserHistory } from 'react-router';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import rootReducer from './reducers';
 import DevTools from './DevTools';
+import clientMiddleware from './middlewares/clientMiddleware';
+import ApiClient from '../helpers/ApiClient';
 
-const middleware = [ThunkMiddleware, routerMiddleware(browserHistory)];
+const client = new ApiClient();
+const middleware = [clientMiddleware(client),ThunkMiddleware, routerMiddleware(browserHistory)];
 
 const finalCreateStore = compose(
   applyMiddleware(...middleware),

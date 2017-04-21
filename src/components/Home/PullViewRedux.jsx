@@ -13,21 +13,9 @@ const NAV_IS_HIDDEN = 'NAV_IS_HIDDEN';
 // action creator
 
 function onScrollToBottom() {
-  return dispatch => {
-    dispatch({type: GET_ARTICLES});
-    // 开始下载
-    fetch(LOAD_ARTICLES_API)
-      .then(res => {
-        return res.json();
-      })
-      .then( data => {
-        // 暂时的hack, 延时0.5秒显示加载动画
-        window.setTimeout(null, 500);
-        dispatch({type: GET_ARTICLES_SUCCESS, payload: data})
-      })
-      .catch(err => {
-        dispatch({type: GET_ARTICLES_ERROR, payload: err});
-      })
+  return {
+    types: [GET_ARTICLES, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR],
+    promise: (client) => client.get(LOAD_ARTICLES_API),
   };
 }
 
