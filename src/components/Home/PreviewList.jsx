@@ -4,13 +4,14 @@
 
 import React from 'react';
 import Preview from './Preview';
+import PropTypes from 'prop-types';
 
 export default class PreviewList extends React.Component {
   static propTypes = {
-    articleList: React.PropTypes.arrayOf(React.PropTypes.object),
-    loadArticles: React.PropTypes.func,
-    loading: React.PropTypes.bool,
-    error: React.PropTypes.bool,
+    articleList: PropTypes.arrayOf(PropTypes.object),
+    loadArticles: PropTypes.func,
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
   };
 
   componentDidMount() {

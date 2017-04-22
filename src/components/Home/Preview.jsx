@@ -3,11 +3,12 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Preview extends React.Component {
   static propTypes = {
-    title: React.PropTypes.string,
-    push: React.PropTypes.func,
+    title: PropTypes.string,
+    push: PropTypes.func,
   };
 
   constructor(props) {
