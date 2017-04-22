@@ -2,21 +2,24 @@
  * Created on 07/03/2017.
  */
 
-let path = require('path');
-let fs = require('fs');
-let express = require('express');
-let webpack = require('webpack');
-let hotMiddleware = require('webpack-hot-middleware');
-let webpackDevMiddleware = require('webpack-dev-middleware');
-let config = require('./webpack.config.js');
+const path = require('path');
+const fs = require('fs');
+const express = require('express');
+const webpack = require('webpack');
+const hotMiddleware = require('webpack-hot-middleware');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const devConfig = require('./webpack.config.dev.js');
+const prodConfig = require('./webpack.config.prod.js');
+const isProd = process.env.NODE_ENV === 'production';
 
 
 
-let app = express();
-let compiler = webpack(config);
+const app = express();
 
-let webpackDevOptions = {
-  publicPath: config.output.publicPath,
+
+
+const webpackDevOptions = {
+  publicPath: devConfig.output.publicPath,
   historyApiFallback: true,
   stats: {
     chunks: false,
@@ -27,15 +30,40 @@ let webpackDevOptions = {
   },
 };
 
+let compiler;
+
+if(isProd)  {
+  compiler = webpack(prodConfig);
+  console.log("production mode...");
+} else {
+  compiler = webpack(devConfig);
+  console.log("development mode...");
+}
+
 app.use(webpackDevMiddleware(compiler, webpackDevOptions));
 app.use(hotMiddleware(compiler));
 
-//暂时使用本地数据
+// 暂时使用本地数据
 app.use(express.static(path.join(__dirname, 'db')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// 由于webpack-dev-server只是将文件打包在内存里，
+// 所以在开发环境下,你没法express里直接sendfile('index.html')，因为这个文件实际上还不存在。
+// 还好webpack提供了一个outputFileStream，用来输出其内存里的文件，我们可以利用它来做路由。
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  let filepath = path.join(compiler.outputPath, 'index.html');
+
+  // 使用webpack提供的outputFileSystem
+  compiler.outputFileSystem.readFile(filepath, function(err, result) {
+    if (err) {
+      // something error
+      return next(err);
+    }
+    res.set('content-type', 'text/html');
+    res.send(result);
+    res.end();
+  });
 });
 
 let offset = 10;

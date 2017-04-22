@@ -5,9 +5,9 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 
-import Frame from '../layouts/Frame';
-import Detail from '../views/Detail';
-import Home from '../views/Home';
+import Frame from './layouts/Frame';
+import Detail from './views/Detail';
+import Home from './views/Home';
 
 const routes = (browserHistory) => (
   <Router history={browserHistory}>

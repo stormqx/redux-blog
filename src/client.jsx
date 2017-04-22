@@ -10,6 +10,8 @@ import { browserHistory } from 'react-router';
 import routes from './routes';
 import configureStore from './redux/configureStore';
 import DevTools from './redux/DevTools';
+import './resources/index.less';
+
 require('font-awesome-webpack');
 
 
@@ -24,4 +26,4 @@ ReactDOM.render((
       <DevTools />
     </div>
   </Provider>
-), document.getElementById('root'));
+), document.getElementById('app'));
