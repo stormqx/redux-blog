@@ -94,7 +94,8 @@ module.exports = {
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      __DEV__: false
+      __DEVELOPMENT__: false,
+      __DEVTOOLS__: false,
     }),
 
   ],

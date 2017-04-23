@@ -7,26 +7,26 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 export default class ApiClient {
   constructor() {
-    methods.forEach( (method) => {
-      this[method] = async(path, {param, data} = {}) => {
+    methods.forEach((method) => {
+      this[method] = async (path, { param, data } = {} ) => {
         try {
-          //暂时只支持get操作，
-          //TODO: 其他操作在需要时进行补充。
-          if(param) {
+          // 暂时只支持get操作，
+          // TODO: 其他操作在需要时进行补充。
+          if (param) {
 
           }
 
           const response = await fetch(this._formatUrl(path));
-          const data = await response.json();
-          return data;
+          const resData = await response.json();
+          return resData;
         } catch(err) {
-          console.log('1'+err);
-        };
-      }
-    })
+          console.error(err);
+        }
+      };
+    });
   }
 
-   _formatUrl(path) {
+  _formatUrl(path) {
     const adjustedPath = path[0] !== '/' ? '/' + path : path;
     //
     // if(__SERVER__) {

@@ -36,6 +36,7 @@ export default class PullView extends React.Component {
 
   lastScrollPos = undefined;
   container = document.body;
+  // timer = null;
 
   componentDidMount() {
     const {props: { mountScrollTop }, container} = this;
@@ -56,7 +57,31 @@ export default class PullView extends React.Component {
 
   _onScroll() {
     // 使用requestAnimationFrame优化scroll性能
-      window.requestAnimationFrame( function() {
+    //
+    // if(typeof this.timer === 'number') {
+    //   clearTimeout(this.timer);
+    // }
+    //
+    // this.timer = setTimeout(function() {
+    //   //这里添加onscroll事件处理
+    //   const { props: { onScrollUp, onScrollDown, onScrollToBottom, toBottom, firstPageHeight }, container } = this;
+    //   const scrollTop = container.scrollTop;
+    //   const windowHeight = window.innerHeight;
+    //   const scrollHeight = container.scrollHeight;
+    //   if ((toBottom + scrollTop + windowHeight) >= scrollHeight) {
+    //     onScrollToBottom && onScrollToBottom();
+    //   }
+    //   // 向下滑动
+    //   if (scrollTop > firstPageHeight) {
+    //     scrollTop > this.lastScrollPos ? onScrollDown && onScrollDown() : onScrollUp && onScrollUp();
+    //   }
+    //
+    //   this.lastScrollPos = scrollTop;
+    // }.bind(this), 50);
+
+
+
+    window.requestAnimationFrame( function() {
         const { props: { onScrollUp, onScrollDown, onScrollToBottom, toBottom, firstPageHeight }, container } = this;
         const scrollTop = container.scrollTop;
         const windowHeight = window.innerHeight;

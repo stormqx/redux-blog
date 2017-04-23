@@ -70,8 +70,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
-      // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
-      __DEV__: true
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: true,
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
