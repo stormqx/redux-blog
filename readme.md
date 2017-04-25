@@ -12,6 +12,23 @@
 > 
 > [dtysky](http://dtysky.moe/)：喜欢这个博客的侧边栏图片的效果。该博客的前端技术栈和我的想法比较相近，可以向大神取经学习。
 
+## 原型图
+
+画画水平有限，请原谅图的粗糙。😄😄😄
+
+### home page
+ 
+[首页图](https://github.com/stormqx/front-end-learning/blob/master/images/home.png)
+
+首页主要参考了[Jerry Qu](https://imququ.com/) 和 [Smallpath的小站](https://smallpath.me/)的风格哇。侧边栏图片的设计，目前打算写成hover到不同button时切换不同的图片。
+
+### ariticle page
+
+[文章页面](https://github.com/stormqx/front-end-learning/blob/master/images/articles.png)
+
+* 增加了header, 参考新版知乎的header风格，向上显示个人信息(home archieve tag about ???)，向下显示文章信息(title post-time ???)。 
+* 侧边栏是table of contents，背景图可以根据不同的文章来设置.
+
 ## 拟用技术栈
 
 ### front
