@@ -5,8 +5,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { actions } from './HomeRedux';
-import PullView from '../components/Home/PullView';
+import { actions } from '../views/HomeRedux';
+import PullView from '../components/PullView';
 
 
 @connect( state => ({

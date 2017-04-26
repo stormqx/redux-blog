@@ -4,7 +4,7 @@
 
 import React from 'react';
 import PreviewList from './PreviewList';
-import Loading from '../Loading/Loading';
+import Loading from './Loading';
 import PropTypes from 'prop-types';
 
 /**

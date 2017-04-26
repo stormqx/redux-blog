@@ -2,20 +2,18 @@
  * Created on 08/03/2017.
  */
 import React from 'react';
-import Nav from '../views/Nav';
-import Slogan from '../views/Slogan';
+import RightNav from './components/RightNav';
 
 
-export default class Frame extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="Frame">
-        <Nav/>
-        <Slogan/>
+      <div id="app-content">
+        <RightNav/>
         <section className="container">
           {this.props.children}
         </section>

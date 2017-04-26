@@ -1,0 +1,66 @@
+html,
+body,
+#app,
+#app-content {
+  position: absolute;
+  height:100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  > #right-nav {
+    .vertical-center();
+    overflow: auto;
+    background: @nav-background-color;
+    width: @nav-width;
+    color: @nav-color;
+    height: 100%;
+    position: fixed;
+    right: 0;
+
+
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    > .title {
+      margin: -50px 0 50px 0;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .buttons {
+      margin: 0;
+      padding: 0;
+
+      >li {
+        display: inline-block;
+        font-size: 18px;
+        height: 45px;
+        line-height: 45px;
+        width: 100%;
+        text-align: center;
+
+        a {
+          color: white;
+          display: block;
+          text-decoration: none;
+        }
+      }
+    }
+
+  }
+
+  .container {
+    margin-right: @nav-width;
+    height: 100%;
+
+    > .pull-view {
+      height: 100%;
+    }
+  }
+}
+
+
