@@ -36,13 +36,11 @@ export default class Preview extends React.Component {
   render() {
     return (
       <article className="article-preview-item">
-        <h3>
-          <a
-            className="title"
-            href={`/detail/${this.props.id}`}
-            onClick={this.handleNavigate.bind(this, this.props.id)}
-          >{this.props.title}</a>
-        </h3>
+        <a
+          className="title"
+          href={`/detail/${this.props.id}`}
+          onClick={this.handleNavigate.bind(this, this.props.id)}
+        >{this.props.title}</a>
         <span className="date">
           <i className="post-date fa fa-calendar" aria-hidden="true"></i>
           {this.props.date}

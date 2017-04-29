@@ -67,7 +67,7 @@ app.get('/', function (req, res) {
 });
 
 let offset = 10;
-app.get('/getArticle', function(req, res) {
+app.get('/articles', function(req, res) {
 
   res.json({
     "id": `${offset+=1}`,

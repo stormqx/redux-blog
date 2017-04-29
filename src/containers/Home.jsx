@@ -6,8 +6,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { actions } from '../views/HomeRedux';
-import PullView from '../components/PullView';
-
+import PreviewList from '../components/PreviewList';
+import Pagination from '../components/Pagination';
 
 @connect( state => ({
   articleList: state.pullView.articleList
@@ -22,7 +22,10 @@ export default class Home extends React.Component {
 
   render() {
     return (
-        <PullView { ...this.props }/>
+      <div className="home-content">
+        <PreviewList/>
+        <Pagination/>
+      </div>
     );
   }
 }

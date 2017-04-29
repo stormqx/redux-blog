@@ -5,7 +5,7 @@
 import React from 'react';
 import {IndexLink, Link} from 'react-router';
 
-export default class RightNav extends React.Component {
+export default class LeftNav extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,7 +14,7 @@ export default class RightNav extends React.Component {
   render() {
 
     return (
-      <aside id="right-nav">
+      <aside id="left-nav">
         <span className="title">stormQx</span>
         <ul className="buttons">
           <li><IndexLink to="/">首页</IndexLink></li>

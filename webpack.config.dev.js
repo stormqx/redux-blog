@@ -71,7 +71,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       __DEVELOPMENT__: true,
-      __DEVTOOLS__: true,
+      __DEVTOOLS__: false,
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
