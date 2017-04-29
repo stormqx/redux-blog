@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router';
 
 
 export default class Pagination extends React.Component {
@@ -15,11 +16,12 @@ export default class Pagination extends React.Component {
 
     return (
       <nav className="pagination">
-        <a id="prev" href="/">上一页</a>
-        <div className="archive">
-          <a id="archive" href="/archive">查看归档</a>
+        <Link id="prev" to="/">上一页</Link>
+        <Link id="next" to="/">下一页</Link>
+        <div className="center">
+        <Link id="archive" to="/archive">查看归档</Link>
         </div>
-        <a id="next" href="/">下一页</a>
+
       </nav>
     );
   }

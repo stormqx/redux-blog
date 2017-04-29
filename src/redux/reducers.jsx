@@ -2,10 +2,10 @@
  * Created on 09/03/2017.
  */
 
-import pullView from '../views/HomeRedux';
+import home from './modules/home';
 import Header from '../views/SloganRedux';
 
 export default {
-  pullView,
+  home,
   Header,
 };

@@ -5,15 +5,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { actions } from '../views/HomeRedux';
+import { homeAction } from '../redux/modules/home';
 import PreviewList from '../components/PreviewList';
 import Pagination from '../components/Pagination';
 
 @connect( state => ({
-  articleList: state.pullView.articleList
+  articleList: state.home.articleList
 }),{
   push,
-  ...actions,
+  ...homeAction,
 })
 export default class Home extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="home-content">
-        <PreviewList/>
+        <PreviewList { ...this.props }/>
         <Pagination/>
       </div>
     );

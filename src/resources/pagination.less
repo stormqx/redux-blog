@@ -1,11 +1,31 @@
 .pagination {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 1.5em 1em 1.5em 0.5em;
+  border-top: 1px #D1D1D1 solid;
+  border-bottom: 1px #D1D1D1 solid;
+
+
   a {
     color: @theme-link-color;
-    display: inline-block;
     text-decoration: none;
   }
 
-  > .archive {
+  > #prev {
+    float: left;
+  }
+
+  .center {
+    .align-center();
+    width: 64px;
+  }
+
+  > #archive {
     display: inline-block;
+
+  }
+
+  > #next {
+    float: right;
   }
 }

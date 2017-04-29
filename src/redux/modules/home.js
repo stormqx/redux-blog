@@ -2,6 +2,8 @@
  * Created on 29/04/2017.
  */
 
+const LOAD_ARTICLES_API = '/articles';
+
 // constants
 const GET_ARTICLES = 'GET_ARTICLES';
 const GET_ARTICLES_SUCCESS = 'GET_ARTICLE_SUCCESS';
@@ -18,7 +20,7 @@ const initialState = {
 
 
 // reducer
-export default function home(state=initialState, action) {
+export default function home( state=initialState, action) {
   switch (action.type) {
     case GET_ARTICLES: {
       return {
@@ -32,7 +34,7 @@ export default function home(state=initialState, action) {
       return {
         ...state,
         loading: false,
-        error:false,
+        error: false,
         articleList: [...state.articleList, action.payload]
       };
     }
@@ -49,10 +51,22 @@ export default function home(state=initialState, action) {
       return {
         ...state,
         totalPage: action.payload,
-      }
+      };
     }
 
     default:
       return state;
   }
 }
+
+// action creator
+const loadArticles = () => ({
+  types: [GET_ARTICLES, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR],
+  promise: client => client.get(LOAD_ARTICLES_API),
+});
+
+const getTotalpage = () => ({
+  types: GET_TOTAL_PAGE
+});
+
+export const homeAction = { loadArticles, getTotalpage };

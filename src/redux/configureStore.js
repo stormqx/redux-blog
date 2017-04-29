@@ -23,7 +23,7 @@ const prodCreateStore = compose(
   applyMiddleware(...middleware),
 )(createStore);
 
-const finalCreateStore =  __DEVTOOLS__ ? devCreateStore : prodCreateStore;
+const finalCreateStore = __DEVTOOLS__ ? devCreateStore : prodCreateStore;
 
 
 const reducer = combineReducers({
