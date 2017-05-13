@@ -3,19 +3,23 @@
  */
 
 import React from 'react';
-import Preview from './Preview';
 import PropTypes from 'prop-types';
+import Preview from './Preview';
+
 
 export default class PreviewList extends React.Component {
-  static propTypes = {
-    articleList: PropTypes.arrayOf(PropTypes.object),
-    loadArticles: PropTypes.func,
-    loading: PropTypes.bool,
-    error: PropTypes.bool,
-  };
-
   componentDidMount() {
-    this.props.loadArticles();
+    // respond to parameter change in scenario: '/' -> 'user/?page=1'
+    this.props.loadArticles(this.props.location.query);
+  }
+
+  componentDidUpdate(prevProps) {
+    // respond to parameter change in scenario: 'user/page=1' -> '${url}?page=2'
+    const oldPage = prevProps.location.query.page;
+    const newPage = this.props.location.query.page;
+    if (oldPage !== newPage) {
+      this.props.loadArticles(this.props.location.query);
+    }
   }
 
   render() {
@@ -30,10 +34,17 @@ export default class PreviewList extends React.Component {
 
     return (
       <div className="article-preview-list">
-        {articleList && articleList.map( item => (
-          <Preview {...item} push={this.props.push} key={item.id}/>
+        {articleList && articleList.map((item) => (
+          <Preview {...item} push={this.props.push} key={item.id} />
         ))}
       </div>
     );
   }
 }
+
+PreviewList.propTypes = {
+  articleList: PropTypes.arrayOf(PropTypes.object),
+  loadArticles: PropTypes.func,
+  loading: PropTypes.bool,
+  error: PropTypes.bool,
+};

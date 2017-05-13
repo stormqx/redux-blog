@@ -1,29 +1,32 @@
 /**
  * Created on 21/04/2017.
  */
+import superagent from 'superagent';
+
 import config from '../../config/config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 export default class ApiClient {
   constructor() {
-    methods.forEach((method) => {
-      this[method] = async (path, { param, data } = {} ) => {
-        try {
-          // 暂时只支持get操作，
-          // TODO: 其他操作在需要时进行补充。
-          if (param) {
+    methods.forEach((method) =>
+      this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
+        const request = superagent[method](this._formatUrl(path));
 
-          }
-
-          const response = await fetch(this._formatUrl(path));
-          const resData = await response.json();
-          return resData;
-        } catch(err) {
-          console.error(err);
+        if (params) {
+          request.query(params);
         }
-      };
-    });
+
+        // if (__SERVER__ && req.get('cookie')) {
+        //   request.set('cookie', req.get('cookie'));
+        // }
+
+        if (data) {
+          request.send(data);
+        }
+
+        request.end((err, { body } = {}) => err ? reject(body || err) : resolve(body));
+      }));
   }
 
   _formatUrl(path) {

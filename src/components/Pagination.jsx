@@ -5,24 +5,28 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
-export default class Pagination extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-
-  render() {
-
-    return (
-      <nav className="pagination">
-        <Link id="prev" to="/">上一页</Link>
-        <Link id="next" to="/">下一页</Link>
-        <div className="center">
+const Pagination = () => {
+  const prevPage = '1';
+  const nextPage = '3';
+  return (
+    <nav className="pagination">
+      <Link
+        id="prev"
+        to={{ pathname: '/', query: { page: prevPage } }}
+      >
+        上一页
+      </Link>
+      <Link
+        id="next"
+        to={{ pathname: '/', query: { page: nextPage } }}
+      >
+        下一页
+      </Link>
+      <div className="center">
         <Link id="archive" to="/archive">查看归档</Link>
-        </div>
+      </div>
+    </nav>
+  );
+};
 
-      </nav>
-    );
-  }
-}
+export default Pagination;
