@@ -3,26 +3,18 @@
  */
 
 import React from 'react';
-import {IndexLink, Link} from 'react-router';
+import { IndexLink, Link } from 'react-router';
 
-export default class LeftNav extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const LeftNav = () => (
+  <aside id="left-nav">
+    <span className="title">stormQx</span>
+    <ul className="buttons">
+      <li><IndexLink to="/">首页</IndexLink></li>
+      <li><Link to="/archive">归档</Link></li>
+      <li><Link to="/tag">标签</Link></li>
+      <li><Link to="/about">关于</Link></li>
+    </ul>
+  </aside>
+);
 
-
-  render() {
-
-    return (
-      <aside id="left-nav">
-        <span className="title">stormQx</span>
-        <ul className="buttons">
-          <li><IndexLink to="/">首页</IndexLink></li>
-          <li><Link to="/archive">归档</Link></li>
-          <li><Link to="/tag">标签</Link></li>
-          <li><Link to="/about">关于</Link></li>
-        </ul>
-      </aside>
-    );
-  }
-}
+export default LeftNav;

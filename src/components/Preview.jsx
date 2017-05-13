@@ -6,10 +6,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Preview extends React.Component {
-  static propTypes = {
-    title: PropTypes.string,
-    push: PropTypes.func,
-  };
 
   constructor(props) {
     super(props);
@@ -17,14 +13,9 @@ export default class Preview extends React.Component {
     this.handleNavigate = this.handleNavigate.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if(this.props.id === nextProps.id) {
-      return false;
-    } else {
-      return true;
-    }
+  shouldComponentUpdate(nextProps) {
+    return this.props.id !== nextProps.id;
   }
-
 
   handleNavigate(id, e) {
     e.preventDefault();
@@ -39,7 +30,7 @@ export default class Preview extends React.Component {
         <a
           className="title"
           href={`/detail/${this.props.id}`}
-          onClick={this.handleNavigate.bind(this, this.props.id)}
+          onClick={() => this.handleNavigate(this.props.id)}
         >{this.props.title}</a>
         <span className="date">
           <i className="post-date fa fa-calendar" aria-hidden="true"></i>
@@ -50,3 +41,11 @@ export default class Preview extends React.Component {
     );
   }
 }
+
+Preview.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.string,
+  date: PropTypes.string,
+  description: PropTypes.string,
+  push: PropTypes.func,
+};

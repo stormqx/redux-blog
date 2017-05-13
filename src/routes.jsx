@@ -12,7 +12,6 @@ import Archive from './containers/Archive';
 import About from './containers/About';
 import Detail from './containers/Detail';
 
-
 const routes = (browserHistory) => (
   <Router history={browserHistory}>
     <Route path="/" component={App}>

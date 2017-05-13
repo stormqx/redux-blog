@@ -9,9 +9,9 @@ import { homeAction } from '../redux/modules/home';
 import PreviewList from '../components/PreviewList';
 import Pagination from '../components/Pagination';
 
-@connect( state => ({
-  articleList: state.home.articleList
-}),{
+@connect( (state) => ({
+  ...state.home,
+}), {
   push,
   ...homeAction,
 })
@@ -23,8 +23,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="home-content">
-        <PreviewList { ...this.props }/>
-        <Pagination/>
+        <PreviewList {...this.props} />
+        <Pagination />
       </div>
     );
   }
