@@ -19,8 +19,9 @@ const routes = (browserHistory) => (
       <Route path="tag" component={Tag} />
       <Route path="archive" component={Archive} />
       <Route path="about" component={About} />
+      <Route path="/detail/:id" component={Detail} />
     </Route>
-    <Route path="/detail/:id" component={Detail} />
+
   </Router>
 );
 

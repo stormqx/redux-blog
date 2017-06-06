@@ -14,8 +14,6 @@ import './resources/index.less';
 
 require('font-awesome-webpack');
 
-
-
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 

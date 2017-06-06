@@ -3,7 +3,15 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { getPathname } from '../utils';
 
+@connect((state, ownProps) => {
+  const articleList = state.home.articleList;
+  const pathName = getPathname(ownProps.location.pathname)[1];
+  const article = articleList.filter((art) => art.pathName === pathName)[0];
+  return article || {};
+})
 export default class Detail extends React.Component {
   constructor(props) {
     super(props);
@@ -11,9 +19,9 @@ export default class Detail extends React.Component {
 
 
   render() {
-
+    console.dir(this.props);
     return (
-      <h2>Detail</h2>
+      <div dangerouslySetInnerHTML={{ __html: this.props.html }} />
     );
   }
 }
