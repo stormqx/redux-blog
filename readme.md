@@ -54,14 +54,16 @@
 ### front 
 
 * [ ] home 
+* [√] 分页
+* [√] useScroll
 * [ ] article
 * [ ] archieve
 * [ ] tag 
 * [ ] about
 * [ ] footer
 * [ ] 服务端渲染(了解下next.js?)
-* [ ] Loading组件
-* [ ] 异步操作封装
+* [√] Loading组件
+* [√] 异步操作封装
 * [ ] 页面meta
 * [ ] 侧边栏图片(参考[Smallpath的小站](https://smallpath.me/)和[dtysky](http://dtysky.moe/))
 * [ ] https

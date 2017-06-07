@@ -3,7 +3,8 @@
  */
 
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, applyRouterMiddleware } from 'react-router';
+import { useScroll } from 'react-router-scroll';
 
 import App from './App';
 import Home from './containers/Home';
@@ -13,7 +14,14 @@ import About from './containers/About';
 import Detail from './containers/Detail';
 
 const routes = (browserHistory) => (
-  <Router history={browserHistory}>
+  <Router
+    history={browserHistory}
+    render={
+      // Scroll to top when going to a new page, imitating default browser
+      // behaviour
+      applyRouterMiddleware(useScroll())
+    }
+  >
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="tag" component={Tag} />
