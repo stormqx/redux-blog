@@ -12,6 +12,7 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const initialState = {
   articleList: [],
   totalPage: -1,
+  currentPage: -1,
 };
 
 // reducer
@@ -31,7 +32,7 @@ export default function home(state = initialState, action) {
         loading: false,
         error: false,
         articleList: [...action.data],
-        totalPage: action.header['x-total-count'],
+        totalPage: +action.header['x-total-count'],
       };
     }
 
@@ -44,23 +45,30 @@ export default function home(state = initialState, action) {
       };
     }
 
+    case SET_CURRENT_PAGE: {
+      return {
+        ...state,
+        currentPage: +action.currentPage,
+      };
+    }
+
     default:
       return state;
   }
 }
 
 // action creator
-const loadArticles = (params = { page: 1 }) => ({
+const loadArticles = (page = 1) => ({
   types: [SET_ARTICLES, SET_ARTICLES_SUCCESS, SET_ARTICLES_ERROR],
   promise: (client) => client.get(LOAD_ARTICLES_API, {
-    params,
+    params: { page },
   }),
 });
 
 
-const setCurrentPage = (page = 1) => ({
+const setCurrentPage = (currentPage = 1) => ({
   type: SET_CURRENT_PAGE,
-  payload: page,
+  currentPage,
 });
 
 export const homeAction = {

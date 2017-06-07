@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { homeAction } from '../redux/modules/home';
 import PreviewList from '../components/PreviewList';
 import Pagination from '../components/Pagination';
@@ -18,12 +19,23 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const listProps = {
+      ...this.props,
+    }
+    const paginationProps = {
+      totalPage: this.props.totalPage,
+      currentPage: this.props.currentPage,
+    }
     return (
       <div className="home-content">
-        <PreviewList {...this.props} />
-        <Pagination />
+        <PreviewList {...listProps} />
+        <Pagination {...paginationProps} />
       </div>
     );
   }
 }
 
+Home.propTypes = {
+  totalPage: PropTypes.number,
+  currentPage: PropTypes.number,
+};
