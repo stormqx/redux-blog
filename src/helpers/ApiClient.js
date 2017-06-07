@@ -3,7 +3,7 @@
  */
 import superagent from 'superagent';
 
-import config from '../../config/config';
+import config from '../../config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -25,12 +25,26 @@ export default class ApiClient {
           request.send(data);
         }
 
-        request.end((err, { body } = {}) => err ? reject(body || err) : resolve(body));
-      }));
+        request.end((err, res) => {
+          if (err) reject(err, res.body);
+
+          const ret = {
+            data,
+            header: {},
+          };
+
+          if (res.header['x-total-count']) {
+            ret.header['x-total-count'] = res.header['x-total-count'];
+          }
+          ret.data = res.body;
+          resolve(ret);
+        });
+      })
+    );
   }
 
   _formatUrl(path) {
-    const adjustedPath = path[0] !== '/' ? '/' + path : path;
+    const adjustedPath = path[0] !== '/' ? `/${path}` : path;
     //
     // if(__SERVER__) {
     //   return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
@@ -38,6 +52,6 @@ export default class ApiClient {
     //
     // else return '/api' + adjustedPath;
 
-     return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
+    return `http://${config.apiHost}:${config.apiPort}${adjustedPath}`;
   }
 }

@@ -3,9 +3,7 @@
  */
 
 import home from './modules/home';
-import Header from '../views/SloganRedux';
 
 export default {
   home,
-  Header,
 };

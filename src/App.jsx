@@ -13,7 +13,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div id="app-content">
-        <LeftNav/>
+        <LeftNav />
         <section className="container">
           {this.props.children}
         </section>

@@ -11,6 +11,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const devConfig = require('./webpack.config.dev.js');
 const prodConfig = require('./webpack.config.prod.js');
 const isProd = process.env.NODE_ENV === 'production';
+const config = require('./config');
 
 const app = express();
 
@@ -69,6 +70,7 @@ app.get('/articles', (req, res) => {
       res.end('cannot read articles.json');
     }
     const articles = JSON.parse(data);
+    res.set('x-total-count', config.TOTAL_PAGE_COUNT);
     res.json(articles);
   });
 });

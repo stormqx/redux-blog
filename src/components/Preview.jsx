@@ -18,7 +18,7 @@ export default class Preview extends React.Component {
         <Link className="title" to={`/detail/${this.props.pathName}`} >{this.props.title}</Link>
         <span className="date">
           <i className="post-date fa fa-calendar" aria-hidden="true"></i>
-          {this.props.date}
+          {this.props.updatedAt}
         </span>
         <p className="description">{this.props.description}</p>
       </article>
@@ -29,7 +29,7 @@ export default class Preview extends React.Component {
 Preview.propTypes = {
   title: PropTypes.string,
   id: PropTypes.string,
-  date: PropTypes.string,
   description: PropTypes.string,
   pathName: PropTypes.string,
+  updatedAt: PropTypes.string,
 };

@@ -23,7 +23,7 @@ const prodCreateStore = compose(
   applyMiddleware(...middleware),
 )(createStore);
 
-const finalCreateStore = __DEVTOOLS__ ? devCreateStore : prodCreateStore;
+const finalCreateStore = __DEVTOOLS__ ? devCreateStore : prodCreateStore; // eslint-disable-line no-undef
 
 
 const reducer = combineReducers({
@@ -35,6 +35,6 @@ export default function configureStore(initialState) {
   return finalCreateStore(
     reducer,
     initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // eslint-disable-line no-underscore-dangle
   );
 }

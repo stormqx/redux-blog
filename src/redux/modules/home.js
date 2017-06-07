@@ -4,21 +4,20 @@
 const LOAD_ARTICLES_API = '/articles';
 
 // constants
-const GET_ARTICLES = 'GET_ARTICLES';
-const GET_ARTICLES_SUCCESS = 'GET_ARTICLE_SUCCESS';
-const GET_ARTICLES_ERROR = 'GET_ARTICLE_ERROR';
-const GET_TOTAL_PAGE = 'GET_TOTAL_PAGE';
+const SET_ARTICLES = 'SET_ARTICLES';
+const SET_ARTICLES_SUCCESS = 'SET_ARTICLE_SUCCESS';
+const SET_ARTICLES_ERROR = 'SET_ARTICLE_ERROR';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 const initialState = {
   articleList: [],
   totalPage: -1,
 };
 
-
 // reducer
 export default function home(state = initialState, action) {
   switch (action.type) {
-    case GET_ARTICLES: {
+    case SET_ARTICLES: {
       return {
         ...state,
         loading: true,
@@ -26,27 +25,22 @@ export default function home(state = initialState, action) {
       };
     }
 
-    case GET_ARTICLES_SUCCESS: {
+    case SET_ARTICLES_SUCCESS: {
       return {
         ...state,
         loading: false,
         error: false,
-        articleList: [...action.payload],
+        articleList: [...action.data],
+        totalPage: action.header['x-total-count'],
       };
     }
 
-    case GET_ARTICLES_ERROR: {
+    case SET_ARTICLES_ERROR: {
       return {
         ...state,
         loading: false,
         error: true,
-      };
-    }
-
-    case GET_TOTAL_PAGE: {
-      return {
-        ...state,
-        totalPage: action.payload,
+        totalPage: -1,
       };
     }
 
@@ -57,15 +51,19 @@ export default function home(state = initialState, action) {
 
 // action creator
 const loadArticles = (params = { page: 1 }) => ({
-  types: [GET_ARTICLES, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR],
+  types: [SET_ARTICLES, SET_ARTICLES_SUCCESS, SET_ARTICLES_ERROR],
   promise: (client) => client.get(LOAD_ARTICLES_API, {
     params,
   }),
 });
 
 
-const getTotalpage = () => ({
-  types: GET_TOTAL_PAGE,
+const setCurrentPage = (page = 1) => ({
+  type: SET_CURRENT_PAGE,
+  payload: page,
 });
 
-export const homeAction = { loadArticles, getTotalpage };
+export const homeAction = {
+  loadArticles,
+  setCurrentPage,
+};
