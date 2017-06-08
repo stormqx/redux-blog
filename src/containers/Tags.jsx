@@ -1,10 +1,10 @@
 /**
- * Created on 08/06/2017.
+ * Created on 26/04/2017.
  */
 
 import React from 'react';
 
-export default class Tag extends React.Component {
+export default class Tags extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,8 +12,7 @@ export default class Tag extends React.Component {
 
   render() {
     return (
-      <div>todo: tag</div>
+      <div>todo: Tags</div>
     );
   }
 }
-

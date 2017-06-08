@@ -10,6 +10,7 @@ module.exports = {
   port: process.env.PORT,
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || '3009',
+  themeColor: '#2479CC',
 
   // server
   TOTAL_PAGE_COUNT: 10,

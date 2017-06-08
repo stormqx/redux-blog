@@ -5,6 +5,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
+import Label from './Label';
+import config from '../../config';
 
 export default class Preview extends React.Component {
 
@@ -13,14 +15,18 @@ export default class Preview extends React.Component {
   }
 
   render() {
+    const { tags } = this.props;
     return (
       <article className="article-preview-item">
-        <Link className="title" to={`/detail/${this.props.pathName}`} >{this.props.title}</Link>
         <span className="date">
-          <i className="post-date fa fa-calendar" aria-hidden="true"></i>
           {this.props.updatedAt}
         </span>
-        <p className="description">{this.props.description}</p>
+        <Link className="title" to={`/detail/${this.props.pathName}`}>
+          {this.props.title}
+        </Link>
+        {tags && tags.map((tag) => <Label key={tag} tag={tag} />)}
+        <p className="description" dangerouslySetInnerHTML={{ __html: this.props.description }} />
+        <Link style={{ color: config.themeColor }} to={`/detail/${this.props.pathName}`}>阅读更多 »</Link>
       </article>
     );
   }
@@ -32,4 +38,5 @@ Preview.propTypes = {
   description: PropTypes.string,
   pathName: PropTypes.string,
   updatedAt: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
 };

@@ -8,6 +8,7 @@ import { useScroll } from 'react-router-scroll';
 
 import App from './App';
 import Home from './containers/Home';
+import Tags from './containers/Tags';
 import Tag from './containers/Tag';
 import Archive from './containers/Archive';
 import About from './containers/About';
@@ -24,7 +25,8 @@ const routes = (browserHistory) => (
   >
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="tag" component={Tag} />
+      <Route path="tags" component={Tags} />
+      <Route path="tag/:tag" component={Tag} />
       <Route path="archive" component={Archive} />
       <Route path="about" component={About} />
       <Route path="/detail/:id" component={Detail} />
