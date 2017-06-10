@@ -12,7 +12,7 @@ export default class PreviewList extends React.Component {
     // respond to parameter change in scenario: '/' -> 'user/?page=1'
     const { page } = this.props.location.query;
     this.props.setCurrentPage(page);
-    this.props.loadArticles(page);
+    this.props.loadPreviewList(page);
   }
 
   componentDidUpdate(prevProps) {
@@ -21,12 +21,12 @@ export default class PreviewList extends React.Component {
     const newPage = this.props.location.query.page;
     if (oldPage !== newPage) {
       this.props.setCurrentPage(newPage);
-      this.props.loadArticles(newPage);
+      this.props.loadPreviewList(newPage);
     }
   }
 
   render() {
-    const { loading, error, articleList } = this.props;
+    const { loading, error, previewList } = this.props;
     // if (loading) {
     //   return (<p>Loading...</p>);
     // }
@@ -37,8 +37,8 @@ export default class PreviewList extends React.Component {
 
     return (
       <div className="article-preview-list">
-        {articleList && articleList.map((item) => (
-          <Preview {...item} push={this.props.push} key={item.id} />
+        {previewList && previewList.map((item) => (
+          <Preview {...item} key={item.id} />
         ))}
       </div>
     );
@@ -46,9 +46,10 @@ export default class PreviewList extends React.Component {
 }
 
 PreviewList.propTypes = {
-  articleList: PropTypes.arrayOf(PropTypes.object),
-  loadArticles: PropTypes.func,
+  previewList: PropTypes.arrayOf(PropTypes.object),
+  loadPreviewList: PropTypes.func,
   setCurrentPage: PropTypes.func,
   loading: PropTypes.bool,
   error: PropTypes.bool,
+  location: PropTypes.object,
 };

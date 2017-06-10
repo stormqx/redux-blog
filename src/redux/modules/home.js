@@ -1,24 +1,24 @@
 /**
  * Created on 29/04/2017.
  */
-const LOAD_ARTICLES_API = '/articles';
+import config from '../../../config';
 
-// constants
-const SET_ARTICLES = 'SET_ARTICLES';
-const SET_ARTICLES_SUCCESS = 'SET_ARTICLE_SUCCESS';
-const SET_ARTICLES_ERROR = 'SET_ARTICLE_ERROR';
+// ------- constants --------
+const SET_PREVIEW_LIST = 'SET_PREVIEW_LIST';
+const SET_PREVIEW_LIST_SUCCESS = 'SET_PREVIEW_LIST_SUCCESS';
+const SET_PREVIEW_LIST_ERROR = 'SET_PREVIEW_LIST_ERROR';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 const initialState = {
-  articleList: [],
+  previewList: [],
   totalPage: -1,
   currentPage: -1,
 };
 
-// reducer
+// -------- reducer --------
 export default function home(state = initialState, action) {
   switch (action.type) {
-    case SET_ARTICLES: {
+    case SET_PREVIEW_LIST: {
       return {
         ...state,
         loading: true,
@@ -26,17 +26,17 @@ export default function home(state = initialState, action) {
       };
     }
 
-    case SET_ARTICLES_SUCCESS: {
+    case SET_PREVIEW_LIST_SUCCESS: {
       return {
         ...state,
         loading: false,
         error: false,
-        articleList: [...action.data],
+        previewList: [...action.data],
         totalPage: +action.header['x-total-count'],
       };
     }
 
-    case SET_ARTICLES_ERROR: {
+    case SET_PREVIEW_LIST_ERROR: {
       return {
         ...state,
         loading: false,
@@ -57,10 +57,10 @@ export default function home(state = initialState, action) {
   }
 }
 
-// action creator
-const loadArticles = (page = 1) => ({
-  types: [SET_ARTICLES, SET_ARTICLES_SUCCESS, SET_ARTICLES_ERROR],
-  promise: (client) => client.get(LOAD_ARTICLES_API, {
+// -------- action creator -------
+const loadPreviewList = (page = 1) => ({
+  types: [SET_PREVIEW_LIST, SET_PREVIEW_LIST_SUCCESS, SET_PREVIEW_LIST_ERROR],
+  promise: (client) => client.get(config.api.SET_PREVIEW_LIST, {
     params: { page },
   }),
 });
@@ -72,6 +72,6 @@ const setCurrentPage = (currentPage = 1) => ({
 });
 
 export const homeAction = {
-  loadArticles,
+  loadPreviewList,
   setCurrentPage,
 };

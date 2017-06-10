@@ -3,7 +3,9 @@
  */
 
 import home from './modules/home';
+import detail from './modules/detail';
 
 export default {
   home,
+  detail,
 };

@@ -11,7 +11,12 @@ module.exports = {
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || '3009',
   themeColor: '#2479CC',
+  api: {
+    SET_PREVIEW_LIST: '/articles',
+    SET_ARTICLE: '/article',
+  },
 
   // server
   TOTAL_PAGE_COUNT: 10,
-}
+};
+

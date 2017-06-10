@@ -75,6 +75,19 @@ app.get('/articles', (req, res) => {
   });
 });
 
+app.get('/article', (req, res) => {
+  fs.readFile(path.join(__dirname, '/db/api/articles.json'), (err, data) => {
+    if (err) {
+      res.status(404);
+      res.end('cannot read articles.json');
+    }
+    const articles = JSON.parse(data);
+    const article = articles[0];
+    article.title = req.query.pathName + article.title;
+    res.json(article);
+  });
+});
+
 app.listen(3009, '0.0.0.0', (err, result) => {
   if (err) {
     throw err;

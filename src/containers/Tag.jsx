@@ -12,7 +12,7 @@ export default class Tag extends React.Component {
 
   render() {
     return (
-      <div>todo: tag</div>
+      <div>todo: {this.props.params.tag}</div>
     );
   }
 }

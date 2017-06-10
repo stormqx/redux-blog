@@ -5,8 +5,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import Label from './Label';
-import config from '../../config';
+import Label from '../Label';
+import config from '../../../config';
 
 export default class Preview extends React.Component {
 

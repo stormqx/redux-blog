@@ -5,14 +5,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { homeAction } from '../redux/modules/home';
-import PreviewList from '../components/PreviewList';
+import PreviewList from '../components/Home/PreviewList';
 import Pagination from '../components/Pagination';
 
 @connect((state) => ({
   ...state.home,
-}), {
-  ...homeAction,
-})
+}), homeAction)
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -21,11 +19,11 @@ export default class Home extends React.Component {
   render() {
     const listProps = {
       ...this.props,
-    }
+    };
     const paginationProps = {
       totalPage: this.props.totalPage,
       currentPage: this.props.currentPage,
-    }
+    };
     return (
       <div className="home-content">
         <PreviewList {...listProps} />

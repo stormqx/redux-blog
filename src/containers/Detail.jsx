@@ -4,24 +4,35 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { detailAction } from '../redux/modules/detail';
+import Article from '../components/Detail/Article';
 import { getPathname } from '../utils';
 
 @connect((state, ownProps) => {
-  const articleList = state.home.articleList;
+  // get article pathName
   const pathName = getPathname(ownProps.location.pathname)[1];
-  const article = articleList.filter((art) => art.pathName === pathName)[0];
-  return article || {};
-})
+
+  // get article content
+  const article = state.detail.article;
+  return { pathName, ...article } || {};
+}, detailAction)
 export default class Detail extends React.Component {
   constructor(props) {
     super(props);
   }
 
-
   render() {
-    console.dir(this.props);
+    const articleProps = {
+      ...this.props,
+    };
     return (
-      <div dangerouslySetInnerHTML={{ __html: this.props.html }} />
+      <div className="detail-content">
+        <Article {...articleProps} />
+      </div>
     );
   }
 }
+
+Detail.propTypes = {
+};
