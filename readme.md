@@ -1,10 +1,12 @@
 # redux blog
 
+[![Build Status](https://travis-ci.org/stormqx/redux-blog.svg?branch=master)](https://travis-ci.org/stormqx/redux-blog)
+
 之前断断续续写了这个项目，然而写到一半才发现写出来的效果和自己想象中的不太一致，在观察了一些自认为优秀的博客后，决定进行重构，这次编写前会认真思考每个页面的设计，希望能写出令自己满意的博客。借鉴内容如下：
 
 > [Smallpath的小站](https://smallpath.me/)：写的非常棒的博客，这篇博客主要向这位大牛学习。
 > 
-> [Jerry Qu](https://imququ.com/)： 屈屈大神的博客，首屏的加载速度简直是bug！！！各种性能优化，膜拜一下。
+> [Jerry Qu](https://imququ.com/)： 屈屈大神的博客，首屏的加载速度简直是bug！！！各种性能优化...
 > 
 > [SimplyY](http://simplyy.space/): simplyY的博客，由于我对于新版博客的预期也是类似于gitbook的形式，所以这位大牛的博客设计风格也要认真学习一个。
 > 
@@ -54,16 +56,16 @@
 ### front 
 
 * [ ] home 
-* [√] 分页
-* [√] useScroll
+* [✓] 分页
+* [✓] useScroll
 * [ ] article
 * [ ] archieve
 * [ ] tag 
 * [ ] about
 * [ ] footer
 * [ ] 服务端渲染(了解下next.js?)
-* [√] Loading组件
-* [√] 异步操作封装
+* [✓] Loading组件
+* [✓] 异步操作封装
 * [ ] 页面meta
 * [ ] 侧边栏图片(参考[Smallpath的小站](https://smallpath.me/)和[dtysky](http://dtysky.moe/))
 * [ ] https
