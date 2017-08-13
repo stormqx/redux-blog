@@ -9,9 +9,9 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 export default class ApiClient {
   constructor() {
-    methods.forEach((method) =>
+    methods.forEach((method) => // eslint-disable-line
       this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](this._formatUrl(path));
+        const request = superagent[method](this._formatUrl(path)); //eslint-disable-line
 
         if (params) {
           request.query(params);

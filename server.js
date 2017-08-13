@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
   const filepath = path.join(compiler.outputPath, 'index.html');
 
   // 使用webpack提供的outputFileSystem
-  compiler.outputFileSystem.readFile(filepath, (err, result, next) => {
+  compiler.outputFileSystem.readFile(filepath, (err, result, next) => { // eslint-disable-line
     if (err) {
       // something error
       return next(err);
@@ -82,13 +82,12 @@ app.get('/article', (req, res) => {
       res.end('cannot read articles.json');
     }
     const articles = JSON.parse(data);
-    const article = articles[0];
-    article.title = req.query.pathName + article.title;
+    const article = articles.filter((a) => a.pathName === req.query.pathName)[0];
     res.json(article);
   });
 });
 
-app.listen(3009, '0.0.0.0', (err, result) => {
+app.listen(3009, '0.0.0.0', (err) => {
   if (err) {
     throw err;
   }

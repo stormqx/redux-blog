@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   resolve: {
+    modules: ['src', 'node_modules'],
     extensions: ['*', '.js', '.jsx', '.json'],
   },
   devtool: 'cheap-module-source-map',
@@ -18,7 +19,7 @@ module.exports = {
       path.resolve(__dirname, 'src/client'),
     ],
   },
-  target: 'web',
+  target: 'web', // Make web variables accessible to webpack, e.g. window
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].bundle.js',

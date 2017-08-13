@@ -1,0 +1,51 @@
+body {
+  font-family: Helvetica Neue, Arial, Hiragino Sans GB, STHeiti, Microsoft YaHei;
+  color: #444;
+  line-height: 1.8;
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: none;
+  -webkit-overflow-scrolling: touch;
+
+  a {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      color: #2479CC;
+      transition: all .2s;
+      text-decoration: none;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+#app,
+#app-content {
+  position: absolute;
+  height:100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  .container {
+    margin-left: 250px;
+    height: 100%;
+    max-width: 1200px;
+    padding: 0 1.5em;
+
+    > .pull-view {
+      height: 100%;
+    }
+  }
+}
+
+
+
+

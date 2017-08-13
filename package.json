@@ -6,10 +6,12 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node server.js",
     "start:prod": "cross-env NODE_ENV=production node server",
-    "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.prod.js --color -p --progress",
     "clean:build": "npm run remove-build && mkdir build",
     "remove:build": "rimraf build",
-    "lint": "eslint src",
+    "lint": "npm run lint:js",
+    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:js": "npm run lint:eslint -- . ",
     "test": "Mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch"
   },
@@ -39,6 +41,8 @@
     "css-loader": "^0.26.4",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",

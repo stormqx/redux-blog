@@ -10,7 +10,9 @@ const WebpackMd5Hash = require('webpack-md5-hash');
 
 module.exports = {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    // Tell webpack what directories should be searched when resolving modules.
+    modules: ['src', 'node_modules'],
+    extensions: ['*', '.js', '.jsx', '.json'],
   },
   entry: path.resolve(__dirname, 'src/client'),
   target: 'web',
@@ -25,7 +27,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['react-hot-loader', 'babel-loader'],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
       },
       {
         // Do not transform vendor's CSS with CSS-modules
@@ -40,21 +42,21 @@ module.exports = {
       {
         test: /\.less$/,
         use: [{
-          loader: "style-loader" // creates style nodes from JS strings
+          loader: 'style-loader', // creates style nodes from JS strings
         }, {
-          loader: "css-loader" // translates CSS into CommonJS
+          loader: 'css-loader', // translates CSS into CommonJS
         }, {
-          loader: "less-loader" // compiles Less to CSS
+          loader: 'less-loader', // compiles Less to CSS
         }],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
       },
-      {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
-      {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff'},
-      {test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream'},
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml'},
-      {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]'},
-      {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
-    ]},
+      { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader' },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+      { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml' },
+      { test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]' },
+      { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
+    ] },
 
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
@@ -87,7 +89,7 @@ module.exports = {
     // Minify JS
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false,
       },
     }),
 
